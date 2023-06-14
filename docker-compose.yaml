@@ -1,0 +1,36 @@
+version: '3.3'
+networks:
+  projet-2A:
+services:
+  db:
+    build:
+      context : ./
+      dockerfile: docker-images/db/Dockerfile
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./Data:/var/lib/postgresql/data
+    networks:
+      - projet-2A
+  frontend:
+    build: 
+      context : ./
+      dockerfile: docker-images/front/Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./Front/vue-front:/vue-front
+  backend:
+    build:
+      context : ./
+      dockerfile: docker-images/back/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./Back/nest-back:/usr/src/app
+    networks:
+      - projet-2A
