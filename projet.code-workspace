@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "Back/nest-back"
+		},
+		{
+			"path": "Front/vue-front"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
